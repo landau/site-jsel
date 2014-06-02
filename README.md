@@ -1,4 +1,4 @@
-site-jsonselect
+site-jsel
 ===============
 
-JSONSelect Playground
+jsel Playground
