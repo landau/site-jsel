@@ -80,7 +80,8 @@ var app = React.createClass({
 
   updateXPath: function(e) {
     try {
-      var xpath = e.target.value;
+      // jsel blows up with quotes...
+      var xpath = e.target.value.replace(/["']/g, '');
 
       this.setState({
         xpath: xpath,
