@@ -60,6 +60,24 @@ var app = React.createClass({
     this.setState(s);
   },
 
+  updateMethod: function(e) {
+    try {
+      var method = e.target.value;
+
+      this.setState({
+        method: method,
+        output: jsel(JSON.parse(this.state.json))[method](this.state.xpath),
+        err: null
+      });
+    } catch(err) {
+      this.setState({
+        method: e.target.value,
+        err: err
+      });
+    }
+
+  },
+
   updateXPath: function(e) {
     try {
       var xpath = e.target.value;
@@ -125,7 +143,7 @@ var app = React.createClass({
             dom.select({
               className: 'form-control',
               type: 'select',
-              onChange: this.onChange,
+              onChange: this.updateMethod,
               value: this.state.method,
               name: 'method'
             },
